@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
     Text,
     View,
+    ScrollView,
     StyleSheet,
     ListView
 } from 'react-native';
@@ -23,8 +24,28 @@ class ExpensesList extends Component {
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             expenses: ds.cloneWithRows([
-                {date: '9/11/2016', amount: 9.00},
-                {date: '9/20/2016', amount: 34.00}
+                {date: '9/11/2016', type: 'food', amount: 9.00},
+                {date: '9/20/2016', type: 'transportation', amount: 34.00},
+                {date: '9/11/2016', type: 'food', amount: 9.00},
+                {date: '9/20/2016', type: 'transportation', amount: 34.00},
+                {date: '9/11/2016', type: 'food', amount: 9.00},
+                {date: '9/20/2016', type: 'transportation', amount: 34.00},
+                {date: '9/11/2016', type: 'food', amount: 9.00},
+                {date: '9/20/2016', type: 'transportation', amount: 34.00},
+                {date: '9/11/2016', type: 'food', amount: 9.00},
+                {date: '9/20/2016', type: 'transportation', amount: 34.00},
+                {date: '9/11/2016', type: 'food', amount: 9.00},
+                {date: '9/20/2016', type: 'transportation', amount: 34.00},
+                {date: '9/11/2016', type: 'food', amount: 9.00},
+                {date: '9/20/2016', type: 'transportation', amount: 34.00},
+                {date: '9/11/2016', type: 'food', amount: 9.00},
+                {date: '9/20/2016', type: 'transportation', amount: 34.00},
+                {date: '9/11/2016', type: 'food', amount: 9.00},
+                {date: '9/20/2016', type: 'transportation', amount: 34.00},
+                {date: '9/11/2016', type: 'food', amount: 9.00},
+                {date: '9/20/2016', type: 'transportation', amount: 34.00},
+                {date: '9/11/2016', type: 'food', amount: 9.00},
+                {date: '9/20/2016', type: 'transportation', amount: 34.00}
             ])
         }
     }
@@ -37,7 +58,10 @@ class ExpensesList extends Component {
                     return (
                         <View style={expensesList.row}>
                             <Text style={expensesList.date}>{rowData.date}</Text>
-                            <Text style={expensesList.namr}>{rowData.amount}</Text>
+                            <View style={expensesList.details}>
+                                <Text style={expensesList.amount}>PHP {rowData.amount}</Text>
+                                <Text style={expensesList.type}>{rowData.type}</Text>
+                            </View>
                         </View>
                     )
                 }}
@@ -84,13 +108,32 @@ const header = StyleSheet.create({
 
 const expensesList = StyleSheet.create({
     row: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        height: 80,
+        borderBottomWidth: 1,
+        borderBottomColor: 'gray'
     },
     date: {
-        flex: 1
+        flex: 1,
+        fontSize: 28,
+        color: 'gray'
+    },
+    details: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end'
+    },
+    type: {
+        flex: 1,
+        fontSize: 12,
+        textAlignVertical: 'center'
     },
     amount: {
-        flex: 1
+        flex: 1,
+        color: 'green',
+        fontSize: 28,
+        textAlignVertical: 'center'
     }
 });
 
