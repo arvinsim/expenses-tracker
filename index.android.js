@@ -5,19 +5,15 @@
  */
 
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  Text,
-  View
-} from 'react-native';
-import { HomePage } from './jsx/android/main'
+import { AppRegistry } from 'react-native';
+import { Expenses } from './js/components/Expenses'
 
-class Expenses extends Component {
+class ExpensesManager extends Component {
   render() {
     return (
-        <HomePage />
+        <Expenses />
     );
   }
 }
 
-AppRegistry.registerComponent('expenses', () => Expenses);
+AppRegistry.registerComponent('expenses', () => ExpensesManager);
