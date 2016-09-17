@@ -46,6 +46,18 @@ export const expensesHeaderStyle = StyleSheet.create({
     }
 });
 
+export const expensesToolbarStyle = StyleSheet.create({
+    view: {
+        flex: 0.5,
+        backgroundColor: 'gray'
+    },
+    addExpense: {
+        fontSize: 20,
+        color: 'white',
+        textAlign: 'center'
+    }
+})
+
 export const expensesContentStyle = StyleSheet.create({
     view: {
         flex: 7

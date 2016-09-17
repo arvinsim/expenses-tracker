@@ -4,11 +4,13 @@ import {
     View,
     ScrollView,
     StyleSheet,
-    ListView
+    ListView,
+    TouchableHighlight
 } from 'react-native';
 import {
     expensesStyle,
     expensesHeaderStyle,
+    expensesToolbarStyle,
     expensesContentStyle
 } from './style.js'
 
@@ -75,13 +77,25 @@ class ExpensesList extends Component {
     }
 }
 
+class ExpensesToolbar extends Component {
+    render() {
+        return (
+            <View style={expensesToolbarStyle.view}>
+                <TouchableHighlight>
+                    <Text style={expensesToolbarStyle.addExpense}>Add Expense</Text>
+                </TouchableHighlight>
+            </View>
+        )
+    }
+}
+
 class ExpensesContent extends Component {
     render() {
         return (
             <View style={expensesContentStyle.view}>
                 <ExpensesList />
             </View>
-        );
+        )
     }
 };
 
@@ -90,6 +104,7 @@ export class Expenses extends Component {
         return (
             <View style={{flex: 1}}>
                 <ExpensesHeader />
+                <ExpensesToolbar />
                 <ExpensesContent />
             </View>
         );
