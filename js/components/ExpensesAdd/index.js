@@ -1,15 +1,31 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-import {} from './style.js'
+import {
+    Text,
+    View,
+    TouchableHighlight
+} from 'react-native'
+import { expensesAddToolbarStyle } from './style.js'
 
 class ExpensesAddHeader extends Component {
     render() {
         return (
             <View>
-<Text>Add Expense</Text>
-</View>
-)
+                <Text>Add Expense</Text>
+            </View>
+        )
+    }
 }
+
+class ExpensesAddToolbar extends Component {
+    render() {
+        return (
+            <View style={expensesAddToolbarStyle.view}>
+                <TouchableHighlight onPress={this.props.onBack}>
+                    <Text style={expensesAddToolbarStyle.back}>Back</Text>
+                </TouchableHighlight>
+            </View>
+        )
+    }
 }
 
 class ExpensesAddForm extends Component {
@@ -37,6 +53,7 @@ export class ExpensesAdd extends Component {
         return (
             <View>
                 <ExpensesAddHeader />
+                <ExpensesAddToolbar {...this.props} />
                 <ExpensesAddContent />
             </View>
         )

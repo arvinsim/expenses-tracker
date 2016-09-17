@@ -81,7 +81,7 @@ class ExpensesToolbar extends Component {
     render() {
         return (
             <View style={expensesToolbarStyle.view}>
-                <TouchableHighlight>
+                <TouchableHighlight onPress={this.props.onAddExpense}>
                     <Text style={expensesToolbarStyle.addExpense}>Add Expense</Text>
                 </TouchableHighlight>
             </View>
@@ -104,7 +104,7 @@ export class Expenses extends Component {
         return (
             <View style={{flex: 1}}>
                 <ExpensesHeader />
-                <ExpensesToolbar />
+                <ExpensesToolbar {...this.props} />
                 <ExpensesContent />
             </View>
         );
