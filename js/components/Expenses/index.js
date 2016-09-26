@@ -13,6 +13,7 @@ import {
     expensesToolbarStyle,
     expensesContentStyle
 } from './style.js'
+import { API_EXPENSES } from '../../constants/api.js'
 
 
 class ExpensesHeader extends Component {
@@ -21,13 +22,27 @@ class ExpensesHeader extends Component {
             <View style={expensesHeaderStyle.view}>
                 <Text numberOfLines={5} style={expensesHeaderStyle.text}>Expenses Manager</Text>
             </View>
-        );
+        )
+    r
+}
+
+// TODO: Causes an error
+async function getExpenses() {
+    try {
+        console.log('API_EXPENSES: %s', API_EXPENSES)
+        let response = await fetch(API_EXPENSES)
+        let responseJson = await response.json()
+        return responseJson
+    } catch(error) {
+        console.error(error)
     }
-};
+}
 
 class ExpensesList extends Component {
     constructor(props) {
         super(props);
+        getExpenses().then(x => console.log(x))
+
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             expenses: ds.cloneWithRows([
