@@ -6,8 +6,8 @@
 
 import React, { Component } from 'react';
 import { AppRegistry, Navigator } from 'react-native';
-import { Expenses } from './js/components/Expenses'
-import { ExpensesAdd } from './js/components/ExpensesAdd'
+import { Expenses } from './js/components/Expenses/index.js'
+import { ExpensesAdd } from './js/components/ExpensesAdd/index.js'
 
 class ExpensesManager extends Component {
     renderScene(route, navigator) {
