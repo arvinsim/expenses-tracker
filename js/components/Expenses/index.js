@@ -23,26 +23,19 @@ class ExpensesHeader extends Component {
                 <Text numberOfLines={5} style={expensesHeaderStyle.text}>Expenses Manager</Text>
             </View>
         )
-    r
-}
-
-// TODO: Causes an error
-async function getExpenses() {
-    try {
-        console.log('API_EXPENSES: %s', API_EXPENSES)
-        let response = await fetch(API_EXPENSES)
-        let responseJson = await response.json()
-        return responseJson
-    } catch(error) {
-        console.error(error)
     }
 }
 
+
 class ExpensesList extends Component {
     constructor(props) {
-        super(props);
-        getExpenses().then(x => console.log(x))
+        super(props)
+        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        this.state = {
+            expenses: ds
+        }
 
+        /*
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
         this.state = {
             expenses: ds.cloneWithRows([
@@ -70,6 +63,33 @@ class ExpensesList extends Component {
                 {date: '9/20/2016', type: 'transportation', amount: 34.00}
             ])
         }
+        */
+    }
+
+    componentDidMount() {
+        this.getExpenses().done()
+    }
+
+    async getExpenses() {
+        const response = await this.ajaxExpensesRequest()
+        const results = response.results
+        const ds = new ListView.DataSource({
+            rowHasChanged: function (prevRowData, nextRowData) {
+                return prevRowData !== nextRowData
+            }
+        })
+        this.setState({expenses: ds.cloneWithRows(results)})
+    }
+
+    async ajaxExpensesRequest() {
+        try {
+            console.log('API_EXPENSES: %s', API_EXPENSES)
+            let response = await fetch(API_EXPENSES)
+            let responseJson = await response.json()
+            return responseJson
+        } catch(error) {
+            console.error(error)
+        }
     }
 
     render() {
@@ -81,8 +101,8 @@ class ExpensesList extends Component {
                         <View style={expensesStyle.row}>
                             <Text style={expensesStyle.date}>{rowData.date}</Text>
                             <View style={expensesStyle.details}>
-                                <Text style={expensesStyle.amount}>PHP {rowData.amount}</Text>
-                                <Text style={expensesStyle.type}>{rowData.type}</Text>
+                                <Text style={expensesStyle.amount}>PHP {rowData.price}</Text>
+                                <Text style={expensesStyle.type}>{rowData.category}</Text>
                             </View>
                         </View>
                     )
@@ -125,4 +145,3 @@ export class Expenses extends Component {
         );
     }
 };
-
