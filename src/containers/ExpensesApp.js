@@ -43,8 +43,9 @@ class ExpensesManager extends Component {
 }
 */
 
-import React, { Component } from 'react';
-import { Text } from 'react-native';
+import React, { Component } from 'react'
+import { View } from 'react-native'
+import ExpensesHeader from '../components/ExpensesHeader'
 
 class ExpensesApp extends Component {
     constructor(props) {
@@ -53,7 +54,9 @@ class ExpensesApp extends Component {
 
     render() {
         return (
-           <Text>The Party Parrot compels you!!!</Text>
+            <View>
+                <ExpensesHeader />
+            </View>
         )
     }
 }
