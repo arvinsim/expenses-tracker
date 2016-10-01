@@ -48,12 +48,16 @@ import { View } from 'react-native'
 import { connect } from 'react-redux';
 
 import ExpensesHeader from '../components/ExpensesHeader'
+import ExpensesList from '../components/ExpensesList'
 
 class ExpensesApp extends Component {
     render() {
         return (
             <View>
                 <ExpensesHeader />
+                <View>
+                    <ExpensesList />
+                </View>
             </View>
         )
     }
