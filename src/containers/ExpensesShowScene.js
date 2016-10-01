@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import ExpensesHeader from '../components/ExpensesHeader'
 import ExpensesList from '../components/ExpensesList'
 
-class ShowExpensesScene extends Component {
+class ExpensesShowScene extends Component {
     render() {
         return (
             <View>
@@ -29,4 +29,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(ShowExpensesScene)
+)(ExpensesShowScene)

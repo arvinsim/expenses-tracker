@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Navigator } from 'react-native'
 import { connect } from 'react-redux';
 
-import ShowExpensesScene from './ShowExpensesScene'
+import ExpensesShowScene from './ExpensesShowScene'
 
 class ExpensesApp extends Component {
     renderScene(route, navigator) {
@@ -10,7 +10,7 @@ class ExpensesApp extends Component {
             // Home
             return (
                 <View>
-                    <ShowExpensesScene />
+                    <ExpensesShowScene />
                 </View>
             )
         } else if (route.index === 1) {
