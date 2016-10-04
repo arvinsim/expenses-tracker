@@ -7,7 +7,9 @@ export function loadExpenses() {
 }
 
 // Reducer
-const initialState = {}
+const initialState = {
+    items: []
+}
 
 const expensesReducer = function(state = initialState, action) {
     switch(action.type) {
