@@ -11,7 +11,7 @@ class ExpensesShowScene extends Component {
             <View>
                 <ExpensesHeader />
                 <View>
-                    <ExpensesList />
+                    <ExpensesList {...this.props} />
                 </View>
             </View>
         )
@@ -19,7 +19,9 @@ class ExpensesShowScene extends Component {
 }
 
 function mapStateToProps(state) {
-    return {}
+    return {
+        currency: state.settings.currency
+    }
 }
 
 function mapDispatchToProps(dispatch) {

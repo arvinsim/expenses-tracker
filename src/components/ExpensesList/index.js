@@ -9,7 +9,7 @@ import expensesStyle from './styles'
 class ExpensesList extends Component {
     render() {
         let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-        ds = ds.cloneWithRows(this.props.expenses)
+        ds = ds.cloneWithRows(this.props.expenses);
         return (
             <ListView
                 dataSource={ds}
@@ -18,8 +18,8 @@ class ExpensesList extends Component {
                         <View style={expensesStyle.row}>
                             <Text style={expensesStyle.date}>{rowData.date}</Text>
                             <View style={expensesStyle.details}>
-                                <Text style={expensesStyle.amount}>PHP {rowData.price}</Text>
-                                <Text style={expensesStyle.type}>{rowData.category}</Text>
+                                <Text style={expensesStyle.amount}>{this.props.currency} {rowData.price}</Text>
+                                <Text style={expensesStyle.type}>{rowData.category.name}</Text>
                             </View>
                         </View>
                     )
@@ -30,7 +30,15 @@ class ExpensesList extends Component {
 }
 
 ExpensesList.propTypes = {
-    expenses: PropTypes.array
+    expenses: PropTypes.arrayOf(PropTypes.shape({
+        date: PropTypes.string.isRequired,
+        category: PropTypes.shape({
+            id: PropTypes.number,
+            name: PropTypes.string
+        }).isRequired,
+        price: PropTypes.number.isRequired
+    })),
+    currency: PropTypes.string
 }
 
 ExpensesList.defaultProps = {
