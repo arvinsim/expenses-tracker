@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 
+import { editExpense } from '../redux/modules/expenses'
+
 import ExpensesHeader from '../components/ExpensesHeader'
 import ExpensesList from '../components/ExpensesList'
 
@@ -25,7 +27,13 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        actions: {
+            onExpenseListItemClick: (rowData) => {
+                dispatch(editExpense(rowData.id))
+            }
+        }
+    }
 }
 
 export default connect(

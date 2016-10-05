@@ -2,7 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import {
     Text,
     View,
-    ListView
+    ListView,
+    TouchableHighlight
 } from 'react-native'
 import expensesStyle from './styles'
 
@@ -15,13 +16,15 @@ class ExpensesList extends Component {
                 dataSource={ds}
                 renderRow={(rowData) => {
                     return (
-                        <View style={expensesStyle.row}>
-                            <Text style={expensesStyle.date}>{rowData.date}</Text>
-                            <View style={expensesStyle.details}>
-                                <Text style={expensesStyle.amount}>{this.props.currency} {rowData.price}</Text>
-                                <Text style={expensesStyle.type}>{rowData.category.name}</Text>
+                        <TouchableHighlight onPress={ this.props.actions.onExpenseListItemClick.bind(this, rowData) }>
+                            <View style={expensesStyle.row}>
+                                <Text style={expensesStyle.date}>{rowData.date}</Text>
+                                        <View style={expensesStyle.details}>
+                                            <Text style={expensesStyle.amount}>{this.props.currency} {rowData.price}</Text>
+                                            <Text style={expensesStyle.type}>{rowData.category.name}</Text>
+                                        </View>
                             </View>
-                        </View>
+                        </TouchableHighlight>
                     )
                 }}
             />
@@ -31,6 +34,7 @@ class ExpensesList extends Component {
 
 ExpensesList.propTypes = {
     expenses: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.number.isRequired,
         date: PropTypes.string.isRequired,
         category: PropTypes.shape({
             id: PropTypes.number,
@@ -43,28 +47,9 @@ ExpensesList.propTypes = {
 
 ExpensesList.defaultProps = {
     expenses: [
-        {date: '9/11/2016', category: 'food', price: 9.00},
-        {date: '9/20/2016', category: 'transportation', price: 34.00},
-        {date: '9/11/2016', category: 'food', price: 9.00},
-        {date: '9/20/2016', category: 'transportation', price: 34.00},
-        {date: '9/11/2016', category: 'food', price: 9.00},
-        {date: '9/20/2016', category: 'transportation', price: 34.00},
-        {date: '9/11/2016', category: 'food', price: 9.00},
-        {date: '9/20/2016', category: 'transportation', price: 34.00},
-        {date: '9/11/2016', category: 'food', price: 9.00},
-        {date: '9/20/2016', category: 'transportation', price: 34.00},
-        {date: '9/11/2016', category: 'food', price: 9.00},
-        {date: '9/20/2016', category: 'transportation', price: 34.00},
-        {date: '9/11/2016', category: 'food', price: 9.00},
-        {date: '9/20/2016', category: 'transportation', price: 34.00},
-        {date: '9/11/2016', category: 'food', price: 9.00},
-        {date: '9/20/2016', category: 'transportation', price: 34.00},
-        {date: '9/11/2016', category: 'food', price: 9.00},
-        {date: '9/20/2016', category: 'transportation', price: 34.00},
-        {date: '9/11/2016', category: 'food', price: 9.00},
-        {date: '9/20/2016', category: 'transportation', price: 34.00},
-        {date: '9/11/2016', category: 'food', price: 9.00},
-        {date: '9/20/2016', category: 'transportation', price: 34.00}
+        { id: 1, date: '9/11/2016', category: { id: 1, name: 'food' }, price: 9.00},
+        { id: 2, date: '9/20/2016', category: { id: 2, name: 'transportation' }, price: 34.00},
+        { id: 3, date: '9/21/2016', category: { id: 3, name: 'transportation' }, price: 17.00}
     ]
 }
 
