@@ -22,7 +22,7 @@ class ExpensesShowScene extends Component {
 
 function mapStateToProps(state) {
     return {
-        currency: state.settings.currency
+        currency: state.settings.get('currency')
     }
 }
 

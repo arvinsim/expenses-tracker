@@ -1,3 +1,5 @@
+import { Map } from 'immutable'
+
 // Actions
 const LOAD_EXPENSES = 'expenses-tracker/expenses/LOAD_EXPENSES'
 const EDIT_EXPENSES = 'expenses-tracker/expenses/EDIT_EXPENSES'
@@ -14,9 +16,9 @@ export function editExpense(id) {
 }
 
 // Reducer
-const initialState = {
+const initialState = Map({
     items: []
-}
+})
 
 const expensesReducer = function(state = initialState, action) {
     switch(action.type) {
