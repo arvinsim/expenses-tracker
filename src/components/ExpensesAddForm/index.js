@@ -14,7 +14,7 @@ class ExpensesAddForm extends Component {
     }
 }
 
-Expenses.propTypes = {}
-Expenses.defaultProps = {}
+ExpensesAddForm.propTypes = {}
+ExpensesAddForm.defaultProps = {}
 
 export default ExpensesAddForm
