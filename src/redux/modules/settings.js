@@ -20,6 +20,7 @@ const settingsReducer = function(state = initialState, action) {
     switch(action.type) {
         case CHANGE_CURRENCY:
             state = state.set('currency', action.currency)
+            return state
         default:
             return state
     }

@@ -10,8 +10,6 @@ export function loadExpenses() {
 }
 
 export function editExpense(id) {
-    console.log('The id of the list item is ');
-    console.log(id)
     return { type: EDIT_EXPENSES }
 }
 
