@@ -1,28 +1,19 @@
 import React, { Component } from 'react'
-import { View, Navigator } from 'react-native'
+import { View, Text } from 'react-native'
 import { connect } from 'react-redux';
 
 import ExpensesShowScene from './ExpensesShowScene'
+import ExpensesAppNavigator from './ExpensesAppNavigator'
 
 class ExpensesApp extends Component {
-    renderScene(route, navigator) {
-        if (route.index === 0) {
-            // Home
-            return (
-                <View>
-                    <ExpensesShowScene />
-                </View>
-            )
-        } else if (route.index === 1) {
-            // TODO: Add Expense
-        }
+    constructor(props, context) {
+        super(props, context)
     }
 
     render() {
         return (
-            <Navigator
-                initialRoute={{ title: 'My Initial Scene', index: 0 }}
-                renderScene={ this.renderScene }
+            <ExpensesAppNavigator
+                navigationState={this.props.navigationState}
             />
         )
     }
