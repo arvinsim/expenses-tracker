@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 
+import { routePop } from '../redux/modules/navigationState'
+
 import ExpensesHeader from '../components/ExpensesHeader'
 import ExpensesAddForm from '../components/ExpensesAddForm'
 
@@ -11,7 +13,7 @@ class ExpensesAddScene extends Component {
             <View>
                 <ExpensesHeader />
                 <View>
-                    <ExpensesAddForm />
+                    <ExpensesAddForm {...this.props} />
                 </View>
             </View>
         )
@@ -23,7 +25,14 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        actions: {
+            onBack: () => {
+                console.log('going back...');
+                dispatch(routePop())
+            }
+        }
+    }
 }
 
 export default connect(

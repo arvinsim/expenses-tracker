@@ -23,8 +23,7 @@ class ExpensesShowScene extends Component {
 
 function mapStateToProps(state) {
     return {
-        currency: state.settings.get('currency'),
-        navigationState: state.navigationState.toJS()
+        currency: state.settings.get('currency')
     }
 }
 
@@ -33,7 +32,6 @@ function mapDispatchToProps(dispatch) {
         actions: {
             onExpenseListItemClick: (rowData) => {
                 dispatch(routePush(ROUTE_EXPENSES_ADD))
-                //dispatch(editExpense(rowData.id))
             }
         }
     }

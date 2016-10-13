@@ -32,18 +32,20 @@ const initialState = Map({
     routes: [{key: ROUTE_EXPENSES_SHOW}]
 })
 
-const navigationStateReducer = function(state = initialState, action) {
-    state = state.toJS()
+const navigationStateReducer = function(currentState = initialState, action) {
+    currentState = currentState.toJS()
 
     switch(action.type) {
         case ROUTE_PUSH:
-            state = NavigationStateUtils.push(state, action.payload.route);
-            return Map(state)
+            currentState = NavigationStateUtils.push(currentState, action.payload.route);
+            return Map(currentState)
         case ROUTE_POP:
-            state = NavigationStateUtils.pop(state);
-            return Map(state)
+            if (currentState.index > 0) {
+                currentState = NavigationStateUtils.pop(currentState);
+            }
+            return Map(currentState)
         default:
-            return Map(state)
+            return Map(currentState)
     }
 }
 
