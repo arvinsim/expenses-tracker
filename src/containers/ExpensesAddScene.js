@@ -28,7 +28,6 @@ function mapDispatchToProps(dispatch) {
     return {
         actions: {
             onBack: () => {
-                console.log('going back...');
                 dispatch(routePop())
             }
         }

@@ -7,7 +7,6 @@ import {
 
 class ExpensesAddForm extends Component {
     render() {
-        console.log(this.props)
         return (
             <View>
                 <Text>ExpensesAddForm</Text>
