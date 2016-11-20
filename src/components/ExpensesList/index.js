@@ -49,7 +49,7 @@ ExpensesList.defaultProps = {
     expenses: [
         { id: 1, date: '9/11/2016', category: { id: 1, name: 'food' }, price: 9.00},
         { id: 2, date: '9/20/2016', category: { id: 2, name: 'transportation' }, price: 34.00},
-        { id: 3, date: '9/21/2016', category: { id: 3, name: 'transportation' }, price: 17.00}
+        { id: 3, date: '9/21/2016', category: { id: 3, name: 'entertainment' }, price: 17.00}
     ]
 }
 
