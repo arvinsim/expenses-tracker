@@ -6,6 +6,7 @@ import {
     TouchableHighlight,
     Picker
 } from 'react-native'
+import { Button, FormLabel, FormInput } from 'react-native-elements'
 
 import expensesAddFormStyles from './styles'
 
@@ -14,20 +15,20 @@ class ExpensesAddForm extends Component {
         return (
             <View>
                 <Text>ExpensesAddForm</Text>
-                <TouchableHighlight onPress={this.props.actions.onBack}>
-                    <Text>GO BACK</Text>
-                </TouchableHighlight>
+                <Button 
+                    onPress={this.props.actions.onBack} 
+                    title="Back"
+                    backgroundColor="lightskyblue"
+                />
 
                 <View>
                     <View>
-                        <Text>Date:</Text>
-                        <TouchableHighlight onPress={()=>{}}>
-                            <Text>Pick Time</Text>
-                        </TouchableHighlight>
+                        <FormLabel>Date:</FormLabel>
+                        <FormInput>Pick Time</FormInput>
                     </View>
 
                     <View>
-                        <Text>Category:</Text>
+                        <FormLabel>Category:</FormLabel>
                         <Picker
                             onValueChange={()=>{}}>
                             <Picker.Item label="Food" value="1" />
@@ -37,15 +38,11 @@ class ExpensesAddForm extends Component {
                     </View>
 
                     <View>
-                        <Text>Amount:</Text>
-                        <TextInput
-                            placeholder="Enter Amount"
-                        />
+                        <FormLabel>Amount:</FormLabel>
+                        <FormInput placeholder="Enter Amount" />
                     </View>
 
-                    <TouchableHighlight>
-                        <Text>Save</Text>
-                    </TouchableHighlight>
+                    <Button icon={{ name: 'done' }} title="Save"/>
                 </View>
             </View>
         )
